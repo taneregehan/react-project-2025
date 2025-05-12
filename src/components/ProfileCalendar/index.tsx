@@ -1,14 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react-hooks/exhaustive-deps */
 import ProfileCard from "../Profile";
 import CalendarContainer from "../Calendar";
-
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getAuthUser } from "../../store/auth/selector";
 import { getSchedule } from "../../store/schedule/selector";
-
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { fetchSchedule } from "../../store/schedule/actions";
 import { setProfile } from "../../store/auth/actions";
 
@@ -21,9 +16,9 @@ const ProfileCalendar = () => {
   const schedule = useSelector(getSchedule);
 
   useEffect(() => {
-    dispatch(setProfile() as any);
-    dispatch(fetchSchedule() as any);
-  }, []);
+    dispatch(setProfile());
+    dispatch(fetchSchedule());
+  }, [dispatch]);
 
   return (
     <div className="profile-calendar-container">
